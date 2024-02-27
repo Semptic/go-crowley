@@ -29,7 +29,7 @@ Install go, templ, [air](https://github.com/cosmtrek/air?tab=readme-ov-file#inst
 ### DB
 
 Use [migrate](https://github.com/golang-migrate/migrate/tree/master/cmd/migrate) for handling database migrations 
-and [jet](https://github.com/go-jet/jet) for typed queries.
+and [pgx](https://github.com/jackc/pgx/tree/master) for postgres.
 
 ```
 go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
