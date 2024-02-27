@@ -172,6 +172,8 @@ func (state *State) loadNewUrls(urlsToCrawl chan UrlData) {
 		}
 		defer rows.Close()
 
+    gotRows := false
+
 		for rows.Next() {
       var page string
       var project string
@@ -194,9 +196,12 @@ func (state *State) loadNewUrls(urlsToCrawl chan UrlData) {
 			fmt.Println("Got URL:", data)
 
 			urlsToCrawl <- data 
+      gotRows = true
 		}
 
-		time.Sleep(1 * time.Second)
+    if (!gotRows) {
+		  time.Sleep(1 * time.Second)
+    }
 	}
 }
 
