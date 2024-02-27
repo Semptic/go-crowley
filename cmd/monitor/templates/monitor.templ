@@ -1,0 +1,76 @@
+package view
+
+import "fmt"
+
+type OverviewInput struct {
+UrlsInProgress int
+UrlsCompleted int
+UrlsQueued int
+ProjectsInProgress int
+ProjectsCompleted int
+}
+
+type UrlData struct {
+Url string
+Project string
+}
+
+templ Overview(overview OverviewInput) {
+<div>
+  <h1>Overview</h1>
+  <p>Urls in progress: { fmt.Sprintf("%d", overview.UrlsInProgress) }</p>
+  <p>Urls completed: { fmt.Sprintf("%d", overview.UrlsCompleted) }</p>
+  <p>Urls queued: { fmt.Sprintf("%d", overview.UrlsQueued) }</p>
+  <p>Projects in progress: { fmt.Sprintf("%d", overview.ProjectsInProgress) }</p>
+  <p>Projects completed: { fmt.Sprintf("%d", overview.ProjectsCompleted) }</p>
+</div>
+}
+
+templ Urls(urls []UrlData) {
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Project</th>
+        <th>Url</th>
+      </tr>
+    </thead>
+    <tbody>
+      for _, url := range urls {
+      <tr>
+        <td>{ url.Project }</td>
+        <td>{ url.Url }</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+}
+
+templ MonitorPage() {
+@Page("Monitor") {
+<div>
+  <div hx-get="/overview" hx-trigger="load, every 1s">
+    Loading...
+  </div>
+  <div>
+    <h1>In Progress</h1>
+      <div hx-get="/urls_in_progress" hx-trigger="load, every 1s">
+        Loading...
+      </div>
+  </div>
+  <div>
+    <h1>In Queue</h1>
+      <div hx-get="/urls_in_queue" hx-trigger="load, every 5s">
+        Loading...
+      </div>
+  </div>
+  <div>
+    <h1>Finished</h1>
+      <div hx-get="/urls_finished" hx-trigger="load, every 5s">
+        Loading...
+      </div>
+  </div>
+</div>
+}
+}
