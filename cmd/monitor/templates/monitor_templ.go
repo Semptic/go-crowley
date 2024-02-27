@@ -193,7 +193,7 @@ func MonitorPage() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div hx-get=\"/overview\" hx-trigger=\"load, every 1s\">Loading...</div><div><h1>In Progress</h1><div hx-get=\"/urls_in_progress\" hx-trigger=\"load, every 1s\">Loading...</div></div><div><h1>In Queue</h1><div hx-get=\"/urls_in_queue\" hx-trigger=\"load, every 5s\">Loading...</div></div><div><h1>Finished</h1><div hx-get=\"/urls_finished\" hx-trigger=\"load, every 5s\">Loading...</div></div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div hx-get=\"/overview\" hx-trigger=\"load, every 100ms\">Loading...</div><div><h1>In Progress</h1><div hx-get=\"/urls_in_progress\" hx-trigger=\"load, every 500ms\">Loading...</div></div><div><h1>Finished</h1><div hx-get=\"/urls_finished\" hx-trigger=\"load, every 5s\">Loading...</div></div><div><h1>In Queue</h1><div hx-get=\"/urls_in_queue\" hx-trigger=\"load, every 5s\">Loading...</div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

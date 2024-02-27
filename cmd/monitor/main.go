@@ -110,7 +110,7 @@ func (state *State) getUrlsInProgress() ([]view.UrlData, error) {
     FROM urls
     WHERE
       finished_at IS NULL AND started_processing_at IS NOT NULL
-    ORDER BY started_processing_at
+    ORDER BY started_processing_at ASC
     LIMIT 10
   `
 
@@ -123,7 +123,7 @@ func (state *State) getUrlsInQueue() ([]view.UrlData, error) {
     FROM urls
     WHERE
       finished_at IS NULL AND started_processing_at IS NULL
-    ORDER BY created_at 
+    ORDER BY created_at DESC
     LIMIT 10
   `
 
@@ -136,7 +136,7 @@ func (state *State) getUrlsFinished() ([]view.UrlData, error) {
     FROM urls
     WHERE
       finished_at IS NOT NULL
-    ORDER BY finished_at
+    ORDER BY finished_at DESC
     LIMIT 10
   `
 

@@ -50,24 +50,24 @@ templ Urls(urls []UrlData) {
 templ MonitorPage() {
 @Page("Monitor") {
 <div>
-  <div hx-get="/overview" hx-trigger="load, every 1s">
+  <div hx-get="/overview" hx-trigger="load, every 100ms">
     Loading...
   </div>
   <div>
     <h1>In Progress</h1>
-      <div hx-get="/urls_in_progress" hx-trigger="load, every 1s">
-        Loading...
-      </div>
-  </div>
-  <div>
-    <h1>In Queue</h1>
-      <div hx-get="/urls_in_queue" hx-trigger="load, every 5s">
+      <div hx-get="/urls_in_progress" hx-trigger="load, every 500ms">
         Loading...
       </div>
   </div>
   <div>
     <h1>Finished</h1>
       <div hx-get="/urls_finished" hx-trigger="load, every 5s">
+        Loading...
+      </div>
+  </div>
+  <div>
+    <h1>In Queue</h1>
+      <div hx-get="/urls_in_queue" hx-trigger="load, every 5s">
         Loading...
       </div>
   </div>
