@@ -3,18 +3,22 @@
 ## Run
 
 1. Add couple of domains to crawl
-```
+```sh
 go run cmd/manager/*.go -p wiki -u https://en.wikipedia.org/wiki/Music_genre
 go run cmd/manager/*.go -p hackernews -u https://news.ycombinator.com/
 ```
 
 2. Start the monitor
-```
+```sh
 ./watch_monitor.sh
+```
+or
+```sh
+go run cmd/monitor/*.go
 ```
 
 3. Start some worker (run the following in multiple terminals)
-```
+```sh
 go run cmd/worker/*.go
 ```
 
